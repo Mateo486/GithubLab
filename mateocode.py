@@ -5,7 +5,7 @@ def encode(num):
 
     for item in range(len(num)):
         num[item] = int(num[item])
-        if (num[item] + 3) > 10:
+        if (num[item] + 3) >= 10:
             num[item] += 3
             num[item] -= 10
         else:
@@ -15,6 +15,18 @@ def encode(num):
     return result
 
 
+def decode(num):
+    result = ""
+    num = list(num)
+    for item in range(len(num)):
+        num[item] = int(num[item])
+        if num[item] <= 2:
+            num[item] += 7
+        else:
+            num[item] -= 3
+    for item in range(len(num)):
+        result += str(num[item])
+    return result
 
 
 
@@ -31,13 +43,15 @@ Menu
 """)
 
         option = input("Please Enter an option: ")
-        password = str(input("Please enter your password to encode: "))
+
 
         if option == "1":
+            password = str(input("Please enter your password to encode: "))
             encoded = encode(password)
             print("Your password has been encoded and stored!")
         elif option == "2":
-            print(f"The encoded password is {encoded} and the original password is {password}")
+            decoded = decode(encoded)
+            print(f"The encoded password is {encoded} and the original password is {decoded}")
         elif option == "3":
             quit()
 
