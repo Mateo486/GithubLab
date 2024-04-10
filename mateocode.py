@@ -1,4 +1,4 @@
-
+# goran is partner
 def encode(num):
     result = ""
     num = list(num)
